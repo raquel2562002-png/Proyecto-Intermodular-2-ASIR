@@ -1,0 +1,43 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS biblioteca;
+USE biblioteca;
+
+-- Tabla LIBROS
+CREATE TABLE LIBROS (
+    id_libro INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    autor VARCHAR(255) NOT NULL,
+    editorial VARCHAR(255),
+    isbn VARCHAR(20) UNIQUE,
+    num_ejemplares INT DEFAULT 1
+);
+
+-- Tabla ALUMNOS
+CREATE TABLE ALUMNOS (
+    id_alumno INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(150) NOT NULL,
+    dni VARCHAR(15) UNIQUE NOT NULL,
+    email VARCHAR(150),
+    curso VARCHAR(100),
+    fecha_registro DATE DEFAULT (CURRENT_DATE),
+    antecedentes VARCHAR(255)
+);
+
+-- Tabla PRESTAMOS
+CREATE TABLE PRESTAMOS (
+    id_prestamo INT AUTO_INCREMENT PRIMARY KEY,
+    id_libro INT NOT NULL,
+    id_alumno INT NOT NULL,
+    fecha_prestamo DATE NOT NULL,
+    fecha_devolucion DATE,
+    devuelto BOOLEAN DEFAULT FALSE,
+    CONSTRAINT fk_prestamo_libro
+        FOREIGN KEY (id_libro) REFERENCES LIBROS(id_libro)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    CONSTRAINT fk_prestamo_alumno
+        FOREIGN KEY (id_alumno) REFERENCES ALUMNOS(id_alumno)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
