@@ -2,17 +2,38 @@
 CREATE DATABASE IF NOT EXISTS biblioteca;
 USE biblioteca;
 
--- Tabla LIBROS
+-- ==========================================
+-- TABLA: LIBROS
+-- ==========================================
 CREATE TABLE LIBROS (
     id_libro INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     autor VARCHAR(255) NOT NULL,
     editorial VARCHAR(255),
     isbn VARCHAR(20) UNIQUE,
-    num_ejemplares INT DEFAULT 1
+    categoria VARCHAR(100)
 );
 
--- Tabla ALUMNOS
+-- ==========================================
+-- TABLA: EJEMPLARES
+-- ==========================================
+CREATE TABLE EJEMPLARES (
+    id_ejemplar INT AUTO_INCREMENT PRIMARY KEY,
+    id_libro INT NOT NULL,
+    codigo_inventario VARCHAR(50) UNIQUE NOT NULL,
+    disponible BOOLEAN DEFAULT TRUE,  -- TRUE = disponible, FALSE = prestado
+    estado_fisico ENUM('Nuevo', 'Bueno', 'Dañado', 'Perdido') DEFAULT 'Bueno',
+    ubicacion VARCHAR(100),
+    CONSTRAINT fk_ejemplar_libro
+        FOREIGN KEY (id_libro)
+        REFERENCES LIBROS(id_libro)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- ==========================================
+-- TABLA: ALUMNOS
+-- ==========================================
 CREATE TABLE ALUMNOS (
     id_alumno INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -24,20 +45,24 @@ CREATE TABLE ALUMNOS (
     antecedentes VARCHAR(255)
 );
 
--- Tabla PRESTAMOS
+-- ==========================================
+-- TABLA: PRESTAMOS
+-- ==========================================
 CREATE TABLE PRESTAMOS (
     id_prestamo INT AUTO_INCREMENT PRIMARY KEY,
-    id_libro INT NOT NULL,
+    id_ejemplar INT NOT NULL,
     id_alumno INT NOT NULL,
     fecha_prestamo DATE NOT NULL,
     fecha_devolucion DATE,
     devuelto BOOLEAN DEFAULT FALSE,
-    CONSTRAINT fk_prestamo_libro
-        FOREIGN KEY (id_libro) REFERENCES LIBROS(id_libro)
+    CONSTRAINT fk_prestamo_ejemplar
+        FOREIGN KEY (id_ejemplar)
+        REFERENCES EJEMPLARES(id_ejemplar)
         ON UPDATE CASCADE
         ON DELETE RESTRICT,
     CONSTRAINT fk_prestamo_alumno
-        FOREIGN KEY (id_alumno) REFERENCES ALUMNOS(id_alumno)
+        FOREIGN KEY (id_alumno)
+        REFERENCES ALUMNOS(id_alumno)
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 );
