@@ -66,3 +66,27 @@ CREATE TABLE PRESTAMOS (
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 );
+
+-- Insertar datos en la tabla LIBROS
+INSERT INTO LIBROS (titulo, autor, editorial, isbn, categoria) VALUES
+('Cien años de soledad', 'Gabriel García Márquez', 'Editorial Sudamericana', '978-3-16-148410-0', 'Ficción'),
+('1984', 'George Orwell', 'Editorial Planeta', '978-0-452-28423-4', 'Distopía'),
+('Don Quijote de la Mancha', 'Miguel de Cervantes', 'Editorial Espasa Calpe', '978-84-670-3272-2', 'Clásico');
+
+-- Insertar datos en la tabla EJEMPLARES
+INSERT INTO EJEMPLARES (id_libro, codigo_inventario, disponible, estado_fisico, ubicacion) VALUES
+(1, 'INV001', TRUE, 'Nuevo', 'Estante A1'),
+(2, 'INV002', FALSE, 'Bueno', 'Estante B3'),
+(3, 'INV003', TRUE, 'Dañado', 'Estante C5');
+
+-- Insertar datos en la tabla ALUMNOS
+INSERT INTO ALUMNOS (nombre, apellidos, dni, email, curso, fecha_registro, antecedentes) VALUES
+('Juan', 'Pérez López', '12345678A', 'juanperez@email.com', 'Ingeniería Informática', '2025-09-15', 'Ninguno'),
+('Ana', 'González Martínez', '87654321B', 'anagonzalez@email.com', 'Medicina', '2025-08-22', 'Ninguno'),
+('Luis', 'Ramírez Sánchez', '11223344C', 'luisramirez@email.com', 'Derecho', '2025-06-10', 'Ninguno');
+
+-- Insertar datos en la tabla PRESTAMOS
+INSERT INTO PRESTAMOS (id_ejemplar, id_alumno, fecha_prestamo, fecha_devolucion, devuelto) VALUES
+(1, 1, '2025-10-01', '2025-10-15', FALSE),
+(2, 2, '2025-09-20', '2025-10-10', TRUE),
+(3, 3, '2025-10-05', NULL, FALSE);
