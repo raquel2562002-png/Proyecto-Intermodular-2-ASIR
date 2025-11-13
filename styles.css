@@ -1,22 +1,15 @@
-/* styles.css
-   CSS simple para un portal educativo (cabecera, nav, contenido, tarjetas, pie)
-   Variables para personalizar colores y tipografía fácilmente.
-*/
-
-/* Estilo reescrito: apariencia tipo portal institucional (cabecera amplia, banda superior, nav clara, tarjetas limpias) */
-
-/* Variables de tema */
-:root{
-  --bg: #f4f6f8;
-  --header-dark: #083d77;    /* azul oscuro cabecera */
-  --header-accent: #0b7a5f;  /* verde acento banda superior */
-  --primary: #0b66b2;        /* azul principal */
-  --muted: #eef3f7;
-  --card: #ffffff;
-  --text: #222222;
-  --muted-text: #65707a;
+/* Paleta otoñal: marrones y verdes */
+:root {
+  --bg: #ddc094;               /* beige claro */
+  --header-dark: #2a2014;      /* marrón oscuro */
+  --header-accent: #5e8c61;    /* verde otoñal */
+  --primary: #7a6048;          /* marrón principal */
+  --muted: #f0ebe5;            /* beige muy claro */
+  --card: #ffffff;             /* blanco */
+  --text: #333333;             /* texto oscuro */
+  --muted-text: #6b5b4a;      /* marrón grisáceo */
   --radius: 6px;
-  --shadow-sm: 0 2px 8px rgba(10,30,60,0.06);
+  --shadow-sm: 0 2px 8px rgba(74, 59, 42, 0.06);
   --max-width: 1100px;
   --gap: 18px;
   --fw-regular: 400;
@@ -25,182 +18,89 @@
   --nav-height: 56px;
 }
 
-/* Reset ligero */
-*{ box-sizing:border-box; }
-html,body{ height:100%; margin:0; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-a{ color:var(--primary); text-decoration:none; }
+/* Reset y estilos base */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--primary); text-decoration: none; }
 
-/* Contenedor central */
-.container{
+/* Contenedor */
+.container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 18px;
 }
 
-/* Banda superior pequeña (información / accesos rápidos) */
-.topbar{
-  background: var(--header-accent);
-  color: #fff;
-  font-size:13px;
-  padding:6px 0;
-}
-.topbar .container{ display:flex; justify-content:space-between; gap:12px; align-items:center; }
-.topbar .links{ display:flex; gap:12px; align-items:center; }
-.topbar a{ color:rgba(255,255,255,0.95); font-weight:600; }
-
-/* Cabecera principal con logo y buscador */
-.header{
-  background: linear-gradient(180deg, var(--header-dark), #0a3a6d);
+/* Cabecera */
+.header {
+  background: linear-gradient(180deg, var(--header-dark), #3a2e1e);
   color: white;
-  padding:18px 0;
+  padding: 18px 0;
   box-shadow: var(--shadow-sm);
 }
-.header .container{ display:flex; align-items:center; gap:18px; justify-content:space-between; }
-.brand{ display:flex; align-items:center; gap:12px; }
-.brand img{ width:72px; height:72px; object-fit:contain; border-radius:8px; background:rgba(255,255,255,0.06); padding:6px; }
-.brand .title{ font-size:20px; font-weight:700; letter-spacing:0.2px; line-height:1; }
-.header .search{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  min-width:280px;
-}
-.header .search input{
-  padding:9px 12px;
-  border-radius:6px;
-  border: none;
-  font-size:14px;
-  width:100%;
-}
-.header .search button{
-  background:#ffd74f;
-  border:none;
-  padding:9px 12px;
-  border-radius:6px;
-  font-weight:700;
-  cursor:pointer;
-}
+.header .container { display: flex; align-items: center; gap: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand img { width: 72px; height: 72px; object-fit: contain; border-radius: 8px; background: rgba(255, 255, 255, 0.06); padding: 6px; }
+.brand .title { font-size: 20px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; }
 
-/* Barra de navegación principal (estilo pestañas sobre fondo blanco) */
-.main-nav{
-  background: #fff;
-  border-top:4px solid var(--header-accent);
-  box-shadow: 0 2px 6px rgba(10,30,60,0.04);
-}
-.main-nav .container{ display:flex; align-items:center; gap:12px; height:var(--nav-height); }
-.nav-list{ display:flex; gap:8px; align-items:center; }
-.nav-list a{
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:6px;
-  color:var(--header-dark);
-  font-weight:600;
-  font-size:14px;
-}
-.nav-list a:hover, .nav-list a.active{
-  background: linear-gradient(180deg, rgba(11,122,95,0.06), rgba(11,122,95,0.02));
-  color: var(--header-accent);
-}
-
-/* Layout principal */
-.layout{
-  display:grid;
-  grid-template-columns: 1fr 320px;
-  gap: var(--gap);
-  margin:20px 0;
-  max-width: var(--max-width);
-  margin-left:auto;
-  margin-right:auto;
-  padding: 0 18px;
-}
-
-/* Cards y secciones */
-.card{
+/* Cards */
+.card {
   background: var(--card);
   border-radius: var(--radius);
-  padding:18px;
+  padding: 24px;
   box-shadow: var(--shadow-sm);
-  margin-bottom: var(--gap);
-  border: 1px solid rgba(15,40,80,0.03);
+  margin: 20px 0;
+  border: 1px solid rgba(74, 59, 42, 0.03);
 }
-.card h2{ margin:0 0 10px 0; font-size:18px; color:var(--header-dark); }
-.card p{ margin:0; color:var(--muted-text); line-height:var(--line-height); }
-
-/* Noticias estilo portal: lista con mini imagen, título y meta */
-.news-list .news-item{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  padding:12px 0;
-  border-bottom:1px solid rgba(15,40,80,0.04);
-}
-.news-list .news-item:last-child{ border-bottom:none; }
-.news-list .thumb{ width:120px; height:72px; flex:0 0 120px; border-radius:6px; overflow:hidden; background:linear-gradient(180deg,#e9f2fb,#ffffff); }
-.news-list .meta{ font-size:13px; color:var(--muted-text); margin-top:6px; }
-
-/* Sidebar compacto */
-.sidebar .box{ margin-bottom: var(--gap); }
-.sidebar .menu{ display:flex; flex-direction:column; gap:8px; }
-.sidebar .menu a{
-  display:block;
-  padding:10px 12px;
-  border-radius:6px;
-  background: linear-gradient(180deg, #ffffff, #fbfdff);
-  border:1px solid rgba(10,30,60,0.03);
-  color:var(--header-dark);
-  font-weight:600;
+.card h2 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  color: var(--header-dark);
 }
 
-/* Tabla / listados simples */
-.table{
-  width:100%;
-  border-collapse:collapse;
-  background:var(--card);
-  border-radius:6px;
-  overflow:hidden;
+/* Formulario */
+.form-group {
+  margin-bottom: 16px;
 }
-.table th, .table td{ padding:10px 12px; text-align:left; border-bottom:1px solid rgba(15,40,80,0.04); font-size:14px; color:var(--muted-text); }
-.table th{ background:var(--muted); color:var(--muted-text); font-weight:700; }
-
-/* Formularios y botones */
-.input, textarea, select{
-  width:100%;
-  padding:10px 12px;
-  border-radius:6px;
-  border:1px solid #e1e7eb;
-  background:white;
-  font-size:14px;
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--header-dark);
 }
-button.btn{
-  padding:10px 14px;
-  border-radius:6px;
-  border:none;
-  background:var(--header-accent);
-  color:white;
-  font-weight:700;
-  cursor:pointer;
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  border: 1px solid #d1c4b8;
+  background: white;
+  font-size: 14px;
+}
+button.btn {
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--header-accent);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
 }
 
 /* Pie de página */
-.footer{
-  margin-top:28px;
-  padding:20px 18px;
-  font-size:13px;
-  color:var(--muted-text);
+.footer {
+  margin-top: 28px;
+  padding: 20px 18px;
+  font-size: 13px;
+  color: var(--muted-text);
   background: #fff;
-  border-top:1px solid rgba(15,40,80,0.03);
-  text-align:center;
-}
-
-/* Responsive */
-@media (max-width:1000px){
-  .layout{ grid-template-columns: 1fr 300px; }
-  .header .container{ flex-direction:column; align-items:flex-start; gap:12px; }
-}
-@media (max-width:800px){
-  .layout{ grid-template-columns: 1fr; padding:0 12px; }
-  .header .search{ width:100%; }
-  .nav-list{ flex-wrap:wrap; }
-  .brand img{ width:56px; height:56px; }
-  .topbar .container{ flex-direction:column; align-items:flex-start; gap:8px; }
+  border-top: 1px solid rgba(74, 59, 42, 0.03);
+  text-align: center;
 }
