@@ -1,15 +1,15 @@
-/* Paleta otoñal: marrones y verdes */
+/* Paleta de colores de la página */
 :root {
-  --bg: #ddc094;               /* beige claro */
-  --header-dark: #2a2014;      /* marrón oscuro */
-  --header-accent: #5e8c61;    /* verde otoñal */
-  --primary: #7a6048;          /* marrón principal */
-  --muted: #f0ebe5;            /* beige muy claro */
-  --card: #ffffff;             /* blanco */
-  --text: #333333;             /* texto oscuro */
-  --muted-text: #6b5b4a;      /* marrón grisáceo */
+  --bg: #ddc094;               
+  --header-dark: #423028;      
+  --header-accent: #59422b;   
+  --primary: #7a6048;          
+  --muted: #f0ebe5;            
+  --card: #ffffff;             
+  --text: #333333;             
+  --muted-text: #072f0f;      
   --radius: 6px;
-  --shadow-sm: 0 2px 8px rgba(74, 59, 42, 0.06);
+  --shadow-sm: 0 2px 8px rgba(236, 180, 117, 0.06);
   --max-width: 1100px;
   --gap: 18px;
   --fw-regular: 400;
@@ -17,8 +17,6 @@
   --line-height: 1.45;
   --nav-height: 56px;
 }
-
-/* Reset y estilos base */
 * { box-sizing: border-box; }
 html, body {
   height: 100%;
@@ -30,14 +28,12 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 a { color: var(--primary); text-decoration: none; }
-
 /* Contenedor */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 18px;
 }
-
 /* Cabecera */
 .header {
   background: linear-gradient(180deg, var(--header-dark), #3a2e1e);
@@ -49,19 +45,22 @@ a { color: var(--primary); text-decoration: none; }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand img { width: 72px; height: 72px; object-fit: contain; border-radius: 8px; background: rgba(255, 255, 255, 0.06); padding: 6px; }
 .brand .title { font-size: 20px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; }
-
 /* Cards */
+
+
 .card {
   background: var(--card);
   border-radius: var(--radius);
   padding: 24px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px rgba(131, 61, 17, 0.475);
   margin: 20px 0;
-  border: 1px solid rgba(74, 59, 42, 0.03);
+
 }
+
+
 .card h2 {
   margin: 0 0 16px 0;
-  font-size: 20px;
+  font-size: 27px;
   color: var(--header-dark);
 }
 
@@ -69,6 +68,7 @@ a { color: var(--primary); text-decoration: none; }
 .form-group {
   margin-bottom: 16px;
 }
+
 .form-group label {
   display: block;
   margin-bottom: 6px;
@@ -83,6 +83,7 @@ a { color: var(--primary); text-decoration: none; }
   background: white;
   font-size: 14px;
 }
+
 button.btn {
   padding: 10px 16px;
   border-radius: var(--radius);
