@@ -1,21 +1,5 @@
 <?php
-// ===== CONEXIÓN A LA BASE DE DATOS =====
-// Datos para conectar a MySQL
-$servername = "localhost";   // Servidor local
-$username = "root";          // Usuario de MySQL
-$password = "root";          // Contraseña de MySQL
-$database = "biblioteca";    // Nombre de la BD
-
-// Crear la conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Si la conexión falla, mostrar error y detener el script
-if ($conn->connect_error) {
-    die("Conexión fallida: " . htmlspecialchars($conn->connect_error));
-}
-
-// Establecer el idioma a UTF-8 para soportar acentos y caracteres especiales
-$conn->set_charset("utf8");
+require_once 'db.php'; // Importar conexión
 
 // ===== PERSONALIZACIONES: NOMBRES DE TABLAS =====
 // Array que mapea nombres de tablas reales con nombres más legibles
@@ -258,7 +242,7 @@ if ($selected_table !== '' && !in_array($selected_table, $tables, true)) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Contenido DB - <?php echo htmlspecialchars($database); ?></title>
-  <link rel="stylesheet" href="styles.css"> <!-- Cargar estilos CSS -->
+  <!-- <link rel="stylesheet" href="styles.css"> Cargar estilos CSS -->
 </head>
 <body>
   <!-- CABECERA -->
