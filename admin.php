@@ -134,43 +134,13 @@ $selected_table = $_GET['table'] ?? ($tables[0] ?? '');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Administrador - <?php echo htmlspecialchars($database); ?></title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f5f5f5; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .header { background: #333; color: white; padding: 20px 0; margin-bottom: 20px; }
-        .header h1 { margin: 0; }
-        .message { padding: 12px; margin-bottom: 12px; border-radius: 4px; }
-        .message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .table-selector { margin-bottom: 20px; }
-        .table-selector select { padding: 8px; border-radius: 4px; border: 1px solid #ddd; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        table th, table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        table th { background: #f8f9fa; font-weight: bold; }
-        table tr:hover { background: #f8f9fa; }
-        button { padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; margin-right: 4px; }
-        .btn-edit { background: #007bff; color: white; }
-        .btn-delete { background: #dc3545; color: white; }
-        .btn-add { background: #28a745; color: white; }
-        .btn-submit { background: #007bff; color: white; }
-        .btn-cancel { background: #6c757d; color: white; }
-        button:hover { opacity: 0.9; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .modal-content { background: white; padding: 20px; border-radius: 8px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; margin-bottom: 4px; font-weight: bold; }
-        .form-group input, .form-group select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-        .form-actions { display: flex; gap: 8px; justify-content: flex-end; }
-    </style>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
 </head>
 <body>
     <div class="header">
         <div class="container">
             <h1>📊 Administrador de Biblioteca</h1>
-            <a href="../libros.php" style="color: white; margin-top: 10px; display: inline-block;">← Volver a visualización</a>
+            <a href="libros.php" class="back-link">← Volver a visualización</a>
         </div>
     </div>
 
@@ -183,7 +153,7 @@ $selected_table = $_GET['table'] ?? ($tables[0] ?? '');
 
         <div class="card">
             <div class="table-selector">
-                <form method="get" style="margin-bottom: 20px;">
+                <form method="get" class="selector-form">
                     <label for="table">Selecciona tabla:</label>
                     <select name="table" id="table" onchange="this.form.submit()">
                         <?php foreach ($tables as $t): ?>
@@ -204,7 +174,7 @@ $selected_table = $_GET['table'] ?? ($tables[0] ?? '');
                 $fields = $res->fetch_fields();
                 ?>
 
-                <table>
+                <table class="data-table">
                     <thead>
                         <tr>
                             <?php foreach ($fields as $f): ?>
@@ -224,7 +194,7 @@ $selected_table = $_GET['table'] ?? ($tables[0] ?? '');
                                 <?php foreach ($fields as $f): ?>
                                     <td><?php echo htmlspecialchars((string)($row[$f->name] ?? '')); ?></td>
                                 <?php endforeach; ?>
-                                <td>
+                                <td class="actions">
                                     <button class="btn-edit" onclick="openEditModal(<?php echo htmlspecialchars(json_encode($row)); ?>, '<?php echo htmlspecialchars($id_column); ?>')">✏️ Editar</button>
                                     <button class="btn-delete" onclick="openDeleteModal('<?php echo htmlspecialchars($selected_table); ?>', '<?php echo htmlspecialchars($id_column); ?>', '<?php echo htmlspecialchars($row[$id_column]); ?>')">🗑️ Eliminar</button>
                                 </td>

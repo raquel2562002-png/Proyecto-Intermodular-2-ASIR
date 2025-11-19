@@ -42,7 +42,6 @@ CREATE TABLE ALUMNOS (
     email VARCHAR(150),
     curso VARCHAR(100),
     fecha_registro DATE DEFAULT (CURRENT_DATE),
-    antecedentes VARCHAR(255)
 );
 
 -- ==========================================
@@ -67,26 +66,116 @@ CREATE TABLE PRESTAMOS (
         ON DELETE RESTRICT
 );
 
--- Insertar datos en la tabla LIBROS
+-- ==========================================
+-- VACIAR BASE DE DATOS COMPLETAMENTE
+-- ==========================================
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE PRESTAMOS;
+TRUNCATE TABLE EJEMPLARES;
+TRUNCATE TABLE ALUMNOS;
+TRUNCATE TABLE LIBROS;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- ==========================================
+-- INSERTAR LIBROS
+-- ==========================================
 INSERT INTO LIBROS (titulo, autor, editorial, isbn, categoria) VALUES
 ('Cien años de soledad', 'Gabriel García Márquez', 'Editorial Sudamericana', '978-3-16-148410-0', 'Ficción'),
 ('1984', 'George Orwell', 'Editorial Planeta', '978-0-452-28423-4', 'Distopía'),
-('Don Quijote de la Mancha', 'Miguel de Cervantes', 'Editorial Espasa Calpe', '978-84-670-3272-2', 'Clásico');
+('Don Quijote de la Mancha', 'Miguel de Cervantes', 'Editorial Espasa Calpe', '978-84-670-3272-2', 'Clásico'),
+('El amor en los tiempos del cólera', 'Gabriel García Márquez', 'Editorial Oveja Negra', '978-84-663-2181-5', 'Ficción'),
+('Fahrenheit 451', 'Ray Bradbury', 'Editorial Minotauro', '978-84-450-7691-2', 'Ciencia Ficción'),
+('Un mundo feliz', 'Aldous Huxley', 'Editorial Debolsillo', '978-84-9759-319-9', 'Distopía'),
+('Rebelión en la granja', 'George Orwell', 'Editorial Destino', '978-84-233-2328-4', 'Sátira'),
+('El principito', 'Antoine de Saint-Exupéry', 'Editorial Salamandra', '978-84-9838-471-2', 'Fábula'),
+('La sombra del viento', 'Carlos Ruiz Zafón', 'Editorial Planeta', '978-84-08-05239-2', 'Misterio'),
+('Harry Potter y la piedra filosofal', 'J.K. Rowling', 'Editorial Salamandra', '978-84-9838-475-0', 'Fantasía');
 
--- Insertar datos en la tabla EJEMPLARES
+-- ==========================================
+-- INSERTAR EJEMPLARES (IDs del 1 al 20)
+-- ==========================================
 INSERT INTO EJEMPLARES (id_libro, codigo_inventario, disponible, estado_fisico, ubicacion) VALUES
-(1, 'INV001', TRUE, 'Nuevo', 'Estante A1'),
-(2, 'INV002', FALSE, 'Bueno', 'Estante B3'),
-(3, 'INV003', TRUE, 'Dañado', 'Estante C5');
+-- Libro 1: Cien años de soledad (3 ejemplares)
+(1, 'LIB-001-01', TRUE, 'Nuevo', 'Estante A1'),
+(1, 'LIB-001-02', TRUE, 'Bueno', 'Estante A1'),
+(1, 'LIB-001-03', FALSE, 'Bueno', 'Estante A1'),
 
--- Insertar datos en la tabla ALUMNOS
-INSERT INTO ALUMNOS (nombre, apellidos, dni, email, curso, fecha_registro, antecedentes) VALUES
-('Juan', 'Pérez López', '12345678A', 'juanperez@email.com', 'Ingeniería Informática', '2025-09-15', 'Ninguno'),
-('Ana', 'González Martínez', '87654321B', 'anagonzalez@email.com', 'Medicina', '2025-08-22', 'Ninguno'),
-('Luis', 'Ramírez Sánchez', '11223344C', 'luisramirez@email.com', 'Derecho', '2025-06-10', 'Ninguno');
+-- Libro 2: 1984 (2 ejemplares)
+(2, 'LIB-002-01', TRUE, 'Bueno', 'Estante B2'),
+(2, 'LIB-002-02', FALSE, 'Dañado', 'Estante B2'),
 
--- Insertar datos en la tabla PRESTAMOS
+-- Libro 3: Don Quijote (3 ejemplares)
+(3, 'LIB-003-01', TRUE, 'Bueno', 'Estante C3'),
+(3, 'LIB-003-02', TRUE, 'Bueno', 'Estante C3'),
+(3, 'LIB-003-03', TRUE, 'Nuevo', 'Estante C3'),
+
+-- Libro 4: El amor en los tiempos del cólera (2 ejemplares)
+(4, 'LIB-004-01', TRUE, 'Bueno', 'Estante D1'),
+(4, 'LIB-004-02', FALSE, 'Bueno', 'Estante D1'),
+
+-- Libro 5: Fahrenheit 451 (2 ejemplares)
+(5, 'LIB-005-01', TRUE, 'Bueno', 'Estante E1'),
+(5, 'LIB-005-02', TRUE, 'Bueno', 'Estante E1'),
+
+-- Libro 6: Un mundo feliz (2 ejemplares)
+(6, 'LIB-006-01', FALSE, 'Bueno', 'Estante E2'),
+(6, 'LIB-006-02', TRUE, 'Dañado', 'Estante E2'),
+
+-- Libro 7: Rebelión en la granja (1 ejemplar)
+(7, 'LIB-007-01', TRUE, 'Bueno', 'Estante F1'),
+
+-- Libro 8: El principito (3 ejemplares)
+(8, 'LIB-008-01', TRUE, 'Nuevo', 'Estante F2'),
+(8, 'LIB-008-02', TRUE, 'Bueno', 'Estante F2'),
+(8, 'LIB-008-03', FALSE, 'Bueno', 'Estante F2'),
+
+-- Libro 9: La sombra del viento (1 ejemplar)
+(9, 'LIB-009-01', TRUE, 'Bueno', 'Estante G1'),
+
+-- Libro 10: Harry Potter (2 ejemplares)
+(10, 'LIB-010-01', TRUE, 'Bueno', 'Estante H2'),
+(10, 'LIB-010-02', TRUE, 'Bueno', 'Estante H2');
+
+-- ==========================================
+-- INSERTAR ALUMNOS (IDs del 1 al 10)
+-- ==========================================
+INSERT INTO ALUMNOS (nombre, apellidos, dni, email, curso, fecha_registro) VALUES
+('Juan', 'Pérez López', '12345678A', 'juanperez@email.com', 'Ingeniería Informática', '2025-09-15'),
+('Ana', 'González Martínez', '87654321B', 'anagonzalez@email.com', 'Medicina', '2025-08-22'),
+('Luis', 'Ramírez Sánchez', '11223344C', 'luisramirez@email.com', 'Derecho', '2025-06-10'),
+('María', 'López García', '23456789D', 'marialopez@email.com', 'Ingeniería Informática', '2025-09-10'),
+('Carlos', 'Martínez Ruiz', '34567890E', 'carlosmartinez@email.com', 'Medicina', '2025-08-15'),
+('Elena', 'Sánchez Pérez', '45678901F', 'elenasanchez@email.com', 'Derecho', '2025-07-20'),
+('David', 'Gómez Fernández', '56789012G', 'davidgomez@email.com', 'Arquitectura', '2025-09-05'),
+('Laura', 'Rodríguez Martín', '67890123H', 'laurarodriguez@email.com', 'Psicología', '2025-08-30'),
+('Pablo', 'Hernández Díaz', '78901234I', 'pablohernandez@email.com', 'Administración de Empresas', '2025-07-25'),
+('Sofía', 'Jiménez Moreno', '89012345J', 'sofiajimenez@email.com', 'Biología', '2025-09-12');
+
+-- ==========================================
+-- INSERTAR PRÉSTAMOS (IDs del 1 al 15)
+-- ==========================================
 INSERT INTO PRESTAMOS (id_ejemplar, id_alumno, fecha_prestamo, fecha_devolucion, devuelto) VALUES
-(1, 1, '2025-10-01', '2025-10-15', FALSE),
-(2, 2, '2025-09-20', '2025-10-10', TRUE),
-(3, 3, '2025-10-05', NULL, FALSE);
+-- Préstamos activos (no devueltos, en fecha)
+(3, 1, '2025-10-20', '2025-11-03', FALSE),   -- Juan Pérez tiene Cien años de soledad
+(4, 2, '2025-10-18', '2025-11-01', FALSE),   -- Ana González tiene 1984
+(9, 3, '2025-10-15', '2025-10-29', FALSE),   -- Luis Ramírez tiene El amor en los tiempos...
+(13, 4, '2025-10-22', '2025-11-05', FALSE),  -- María López tiene Un mundo feliz
+(17, 5, '2025-10-19', '2025-11-02', FALSE),  -- Carlos Martínez tiene El principito
+
+-- Préstamos retrasados (no devueltos, fecha pasada)
+(6, 6, '2025-10-01', '2025-10-15', FALSE),   -- Elena Sánchez con 1984 retrasado
+(11, 7, '2025-10-05', '2025-10-19', FALSE),  -- David Gómez con Un mundo feliz retrasado
+(18, 8, '2025-10-03', '2025-10-17', FALSE),  -- Laura Rodríguez con El principito retrasado
+
+-- Préstamos devueltos a tiempo
+(1, 9, '2025-10-10', '2025-10-24', TRUE),    -- Pablo Hernández devolvió Cien años
+(7, 10, '2025-10-12', '2025-10-26', TRUE),   -- Sofía Jiménez devolvió Don Quijote
+(10, 1, '2025-10-08', '2025-10-22', TRUE),   -- Juan Pérez devolvió Fahrenheit 451
+(14, 2, '2025-10-14', '2025-10-28', TRUE),   -- Ana González devolvió Rebelión en la granja
+(19, 3, '2025-10-11', '2025-10-25', TRUE),   -- Luis Ramírez devolvió La sombra del viento
+
+-- Préstamos devueltos con retraso (pero ya devueltos)
+(2, 4, '2025-09-20', '2025-10-04', TRUE),    -- María López devolvió Cien años con retraso
+(5, 5, '2025-09-25', '2025-10-09', TRUE);    -- Carlos Martínez devolvió 1984 con retraso
