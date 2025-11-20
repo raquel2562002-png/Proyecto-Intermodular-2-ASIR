@@ -41,7 +41,7 @@ CREATE TABLE ALUMNOS (
     dni VARCHAR(15) UNIQUE NOT NULL,
     email VARCHAR(150),
     curso VARCHAR(100),
-    fecha_registro DATE DEFAULT (CURRENT_DATE),
+    fecha_registro DATE DEFAULT (CURRENT_DATE)
 );
 
 -- ==========================================
