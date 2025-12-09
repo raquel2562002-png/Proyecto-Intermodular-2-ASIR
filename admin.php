@@ -296,7 +296,8 @@ $selected_table = $_GET['table'] ?? ($tables[0] ?? '');
     <div class="header">
         <div class="container">
             <h1>Administrador de Biblioteca</h1>
-            <a href="libros.php" class="back-link">← Volver a visualización</a>
+            <a href="index.html">Ir a página inicial</a>
+            <a href="libros.php">Ir al listado de libros</a>
         </div>
     </div>
 

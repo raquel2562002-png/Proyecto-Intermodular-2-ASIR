@@ -317,7 +317,14 @@ $tableManager = new TableManager($conn);
   <title>Base de datos: <?php echo htmlspecialchars($database); ?></title>
 </head>
 <body>
-  <h1>Base de datos: <?php echo htmlspecialchars($database); ?></h1>
+  <div class="header">
+        <div class="container">
+            <h1>Biblioteca</h1>
+            <a href="index.html">Ir a página inicial</a>
+            <a href="admin.php">Ir a administración</a>
+            
+        </div>
+    </div>
   
   <!-- FORMULARIO DE BÚSQUEDA Y SELECCIÓN -->
   <form method="get">
