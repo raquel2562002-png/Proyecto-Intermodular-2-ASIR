@@ -80,9 +80,7 @@ body {
   padding: 20px;
 }
 
-/* ================================================
-   CONTENIDO (Asegurar que no se superponga)
-================================================ */
+
 .content {
   flex: 1;
   width: 100%;
@@ -91,9 +89,7 @@ body {
   padding: 20px 0;
 }
 
-/* ================================================
-   HEADER INNER (Ajuste de ancho y alineación)
-================================================ */
+
 .header-inner {
   width: 100%;
   max-width: 1400px;
@@ -104,17 +100,15 @@ body {
   height: 100%;
 }
 
-/* ================================================
-   BRAND (Ajuste de logo y texto)
-================================================ */
+
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 .brand img {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -155,10 +149,11 @@ body {
   font-size: 14px;
   margin-top: auto;
 }
-
-/* ================================================
-   TARJETAS Y BOTONES (Sin cambios)
-================================================ */
+a {
+  color: var(--header-dark); /* Color marrón oscuro (o el que prefieras) */
+  text-decoration: none; /* Elimina el subrayado */
+  font-weight: 600; /* Opcional: para darle un poco más de peso visual */
+}
 .card {
   background: var(--card-bg);
   border-radius: var(--radius);
@@ -203,7 +198,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== ADMINISTRADOR (admin.php) ===== */
+
 .message {
     padding: 12px;
     margin-bottom: 12px;
