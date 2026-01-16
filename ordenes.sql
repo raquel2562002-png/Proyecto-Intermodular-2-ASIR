@@ -134,47 +134,47 @@ INSERT INTO LIBROS (titulo, autor, editorial, isbn, id_categoria) VALUES
 -- ==========================================
 -- INSERTAR EJEMPLARES (IDs del 1 al 20)
 -- ==========================================
-INSERT INTO EJEMPLARES (id_libro, codigo_inventario, estado_fisico) VALUES
+INSERT INTO EJEMPLARES (id_libro, estado_fisico) VALUES
 -- Libro 1: Cien años de soledad (3 ejemplares)
-(1, 'LIB-001-01', 'Usar'),
-(1, 'LIB-001-02', 'Usar'),
-(1, 'LIB-001-03', 'Usar'),
+(1, 'Usar'),
+(1, 'Usar'),
+(1, 'Usar'),
 
 -- Libro 2: 1984 (2 ejemplares)
-(2, 'LIB-002-01', 'Usar'),
-(2, 'LIB-002-02', 'Sustituir'),
+(2, 'Usar'),
+(2, 'Sustituir'),
 
 -- Libro 3: Don Quijote (3 ejemplares)
-(3, 'LIB-003-01', 'Usar'),
-(3, 'LIB-003-02', 'Usar'),
-(3, 'LIB-003-03', 'Usar'),
+(3, 'Usar'),
+(3, 'Usar'),
+(3, 'Usar'),
 
 -- Libro 4: El amor en los tiempos del cólera (2 ejemplares)
-(4, 'LIB-004-01', 'Usar'),
-(4, 'LIB-004-02', 'Usar'),
+(4, 'Usar'),
+(4, 'Usar'),
 
 -- Libro 5: Fahrenheit 451 (2 ejemplares)
-(5, 'LIB-005-01', 'Usar'),
-(5, 'LIB-005-02', 'Usar'),
+(5, 'Usar'),
+(5, 'Usar'),
 
 -- Libro 6: Un mundo feliz (2 ejemplares)
-(6, 'LIB-006-01', 'Usar'),
-(6, 'LIB-006-02', 'Sustituir'),
+(6, 'Usar'),
+(6, 'Sustituir'),
 
 -- Libro 7: Rebelión en la granja (1 ejemplar)
-(7, 'LIB-007-01', 'Usar'),
+(7, 'Usar'),
 
 -- Libro 8: El principito (3 ejemplares)
-(8, 'LIB-008-01', 'Usar'),
-(8, 'LIB-008-02', 'Usar'),
-(8, 'LIB-008-03', 'Usar'),
+(8, 'Usar'),
+(8, 'Usar'),
+(8, 'Usar'),
 
 -- Libro 9: La sombra del viento (1 ejemplar)
-(9, 'LIB-009-01', 'Usar'),
+(9, 'Usar'),
 
 -- Libro 10: Harry Potter (2 ejemplares)
-(10, 'LIB-010-01', 'Usar'),
-(10, 'LIB-010-02', 'Usar');
+(10, 'Usar'),
+(10, 'Usar');
 
 -- ==========================================
 -- INSERTAR ALUMNOS (IDs del 1 al 10)
