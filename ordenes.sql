@@ -35,7 +35,6 @@ CREATE TABLE LIBROS (
 CREATE TABLE EJEMPLARES (
     id_ejemplar INT AUTO_INCREMENT PRIMARY KEY,
     id_libro INT NOT NULL,
-    codigo_inventario VARCHAR(50) UNIQUE NOT NULL,
     estado_fisico ENUM('Usar', 'Sustituir', 'Perdido') DEFAULT 'Usar',
     CONSTRAINT fk_ejemplar_libro
         FOREIGN KEY (id_libro)
